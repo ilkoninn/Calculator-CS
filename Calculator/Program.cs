@@ -1,25 +1,17 @@
-﻿using System;
-
-namespace Calculator
+﻿namespace Calculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=================== Calculator Program ===================");
-
             int count = 0;
+
+            Console.WriteLine("=================== Calculator Program ===================");
             do
             {
                 count++;
-                if (count > 1)
-                {
-                    Console.WriteLine("\n======= Calculator Program =======");
-                }
-                else
-                {
-                    Console.WriteLine("Hello, this is C# calculator program :D");
-                }
+                if (count == 1) Console.WriteLine("Hello, this is C# calculator program :D");
+                else Console.WriteLine("\n======= Calculator Program =======");
 
                 Console.Write(
                     "\n 1 - Addition" +
@@ -28,87 +20,98 @@ namespace Calculator
                     "\n 4 - Division" +
                     "\n 5 - Power" +
                     "\nExit(Any number)" +
-                    "\n\nPlease choose an operation ID (1-5): ");
+                    "\n\nPlease choose a operation ID(1-5): ");
+                int userChoice = int.Parse(Console.ReadLine());
 
-                int userChoice;
-                if (!int.TryParse(Console.ReadLine(), out userChoice) || userChoice < 1 || userChoice > 5)
+                MyClass operation = new MyClass();
+                double answer = 0;
+                if (userChoice == 1)
                 {
-                    Console.WriteLine("Invalid input. Please enter a number between 1 and 5.\n");
+                    Console.Write("\nFirst number: ");
+                    double firstNumber = double.Parse(Console.ReadLine());
+
+                    Console.Write("Second number: ");
+                    double secondNumber = double.Parse(Console.ReadLine());
+
+                    answer = operation.Addition(firstNumber, secondNumber);
+
+                    Console.WriteLine("Addition of these numbers: " + answer + "\n");
+
+                }
+                else if (userChoice == 2)
+                {
+                    Console.Write("\nFirst number: ");
+                    double firstNumber = double.Parse(Console.ReadLine());
+
+                    Console.Write("Second number: ");
+                    double secondNumber = double.Parse(Console.ReadLine());
+
+                    answer = operation.Subtraction(firstNumber, secondNumber);
+
+                    Console.WriteLine("Subtraction of these numbers: " + answer + "\n");
+                }
+                else if (userChoice == 3)
+                {
+                    Console.Write("\nFirst number: ");
+                    double firstNumber = double.Parse(Console.ReadLine());
+
+                    Console.Write("Second number: ");
+                    double secondNumber = double.Parse(Console.ReadLine());
+
+                    answer = operation.Multiplication(firstNumber, secondNumber);
+
+                    Console.WriteLine("Multiplication of these numbers: " + answer + "\n");
+                }
+                else if (userChoice == 4)
+                {
+                    Console.Write("\nFirst number: ");
+                    double firstNumber = double.Parse(Console.ReadLine());
+
+                    Console.Write("Second number: ");
+                    double secondNumber = double.Parse(Console.ReadLine());
+
+                    answer = operation.Division(firstNumber, secondNumber);
+
+                    Console.WriteLine("Division of these numbers: " + answer + "\n");
+                }
+                else if (userChoice == 5)
+                {
+                    Console.WriteLine("\nIf you want to find power of numbers, you should look that:" +
+                        "\nThe first number will be your number, which find its power");
+                    Console.Write("\nFirst number: ");
+                    double firstNumber = double.Parse(Console.ReadLine());
+
+                    Console.Write("Second number: ");
+                    double secondNumber = double.Parse(Console.ReadLine());
+
+                    answer = operation.Power(firstNumber, secondNumber);
+
+                    Console.WriteLine(firstNumber + "to the power of " + secondNumber + " (" +
+                        firstNumber + "^" + secondNumber + "): " + answer + "\n");
+
+                }
+                else
+                {
                     break;
                 }
 
-                MyMath operation = new MyMath();
-                double answer = 0;
-
-                switch (userChoice)
-                {
-                    case 1:
-                        answer = GetValidNumber("Enter the first number: ") + GetValidNumber("Enter the second number: ");
-                        Console.WriteLine("Addition of these numbers: " + answer + "\n");
-                        break;
-                    case 2:
-                        answer = GetValidNumber("Enter the first number: ") - GetValidNumber("Enter the second number: ");
-                        Console.WriteLine("Subtraction of these numbers: " + answer + "\n");
-                        break;
-                    case 3:
-                        answer = GetValidNumber("Enter the first number: ") * GetValidNumber("Enter the second number: ");
-                        Console.WriteLine("Multiplication of these numbers: " + answer + "\n");
-                        break;
-                    case 4:
-                        double dividend = GetValidNumber("Enter the dividend: ");
-                        double divisor = GetValidNumber("Enter the divisor: ");
-                        try
-                        {
-                            answer = dividend / divisor;
-                            Console.WriteLine("Division of these numbers: " + answer + "\n");
-                        }
-                        catch (DivideByZeroException ex)
-                        {
-                            Console.WriteLine("Error: " + "Division by Zero Occured!" + "\n");
-                        }
-                        break;
-                    case 5:
-                        double firstNumber = GetValidNumber("Enter the first number: ");
-                        double secondNumber = GetValidNumber("Enter the second number: ");
-                        try
-                        {
-                            answer = Math.Pow(firstNumber, secondNumber);
-                            Console.WriteLine(firstNumber + " to the power of " + secondNumber + " (" +
-                                firstNumber + "^" + secondNumber + "): " + answer + "\n");
-                        }
-                        catch (OverflowException ex)
-                        {
-                            Console.WriteLine("Error: " + "Overflow Occured!" + "\n");
-                        }
-                        break;
-                }
-
-                Console.Write("Do you want to continue? (y/n): ");
+                Console.Write("Do you want to continue?(y/n): ");
                 string userContinueChoice = Console.ReadLine();
 
-                if (userContinueChoice.ToLower() != "y" && userContinueChoice.ToLower() != "yes")
+                if (operation.ToLowerString(ref userContinueChoice) == "y" || operation.ToLowerString(ref userContinueChoice) == "yes")
+                {
+                    continue;
+                }
+                else
                 {
                     break;
                 }
 
             } while (true);
-
-            Console.WriteLine("\nProgram has been stopped\n");
+            Console.WriteLine("\n\t\tProgram has been stopped\n");
             Console.WriteLine("==========================================================");
-        }
 
-        static double GetValidNumber(string message)
-        {
-            double number;
-            while (true)
-            {
-                Console.Write(message);
-                if (double.TryParse(Console.ReadLine(), out number))
-                {
-                    return number;
-                }
-                Console.WriteLine("Invalid input. Please enter a valid number.\n");
-            }
+
         }
     }
 }
