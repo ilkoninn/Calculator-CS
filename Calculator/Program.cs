@@ -20,12 +20,12 @@
                     "\n 4 - Division" +
                     "\n 5 - Power" +
                     "\nExit(Any number)" +
-                    "\n\nPlease choose a operation ID(1-4): ");
+                    "\n\nPlease choose a operation ID(1-5): ");
                 int userChoice = int.Parse(Console.ReadLine());
 
                 MyMath operation = new MyMath();
                 double answer = 0;
-                if(userChoice == 1)
+                if (userChoice == 1)
                 {
                     Console.Write("\nFirst number: ");
                     double firstNumber = double.Parse(Console.ReadLine());
@@ -38,7 +38,7 @@
                     Console.WriteLine("Addition of these numbers: " + answer + "\n");
 
                 }
-                else if(userChoice == 2)
+                else if (userChoice == 2)
                 {
                     Console.Write("\nFirst number: ");
                     double firstNumber = double.Parse(Console.ReadLine());
@@ -50,7 +50,7 @@
 
                     Console.WriteLine("Subtraction of these numbers: " + answer + "\n");
                 }
-                else if(userChoice == 3)
+                else if (userChoice == 3)
                 {
                     Console.Write("\nFirst number: ");
                     double firstNumber = double.Parse(Console.ReadLine());
@@ -62,7 +62,7 @@
 
                     Console.WriteLine("Multiplication of these numbers: " + answer + "\n");
                 }
-                else if(userChoice == 4)
+                else if (userChoice == 4)
                 {
                     Console.Write("\nFirst number: ");
                     double firstNumber = double.Parse(Console.ReadLine());
@@ -74,7 +74,7 @@
 
                     Console.WriteLine("Division of these numbers: " + answer + "\n");
                 }
-                else if(userChoice == 5)
+                else if (userChoice == 5)
                 {
                     Console.WriteLine("\nIf you want to find power of numbers, you should look that:" +
                         "\nThe first number will be your number, which find its power");
@@ -86,7 +86,7 @@
 
                     answer = operation.Power(firstNumber, secondNumber);
 
-                    Console.WriteLine(firstNumber +  "to the power of " + secondNumber + " (" +
+                    Console.WriteLine(firstNumber + "to the power of " + secondNumber + " (" +
                         firstNumber + "^" + secondNumber + "): " + answer + "\n");
 
                 }
@@ -97,8 +97,8 @@
 
                 Console.Write("Do you want to continue?(y/n): ");
                 string userContinueChoice = Console.ReadLine();
-                
-                if(userContinueChoice.ToLower() == "y" ||  userContinueChoice.ToLower() == "yes")
+
+                if (operation.ToLowerString(ref userContinueChoice) == "y" || operation.ToLowerString(ref userContinueChoice) == "yes")
                 {
                     continue;
                 }
@@ -110,6 +110,8 @@
             } while (true);
             Console.WriteLine("\n\t\tProgram has been stopped\n");
             Console.WriteLine("==========================================================");
+
+
         }
     }
 }
