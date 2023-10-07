@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    public class MyMath
+    public class MyClass
     {
         public double Addition(double x, double y)
         {

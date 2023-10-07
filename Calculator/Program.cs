@@ -23,7 +23,7 @@
                     "\n\nPlease choose a operation ID(1-5): ");
                 int userChoice = int.Parse(Console.ReadLine());
 
-                MyMath operation = new MyMath();
+                MyClass operation = new MyClass();
                 double answer = 0;
                 if (userChoice == 1)
                 {
