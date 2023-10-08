@@ -1,6 +1,5 @@
 bin/
+.vs/
+obj/
 Calculator.csproj
 Calculator.sln
-obj/
-.vs/
-../Material/
