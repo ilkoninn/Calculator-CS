@@ -1,5 +1,4 @@
 bin/
-.vs/
 obj/
 Calculator.csproj
 Calculator.sln

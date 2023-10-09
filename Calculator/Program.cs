@@ -86,8 +86,8 @@
                     Console.Write("Do you want to continue?(y/n): ");
                     string userContinueChoice = Console.ReadLine();
                     MyStringClass stringOperation = new MyStringClass();
-                    
-                    if (stringOperation.ToLowerString(ref userContinueChoice) == "y" || 
+
+                    if (stringOperation.ToLowerString(ref userContinueChoice) == "y" ||
                         stringOperation.ToLowerString(ref userContinueChoice) == "yes")
                     {
                         continue;
@@ -97,7 +97,6 @@
                         break;
                     }
                 }
-
 
             } while (running);
             Console.WriteLine("\n\t\tProgram has been stopped\n");
@@ -110,7 +109,6 @@
             double answer = 0;
             MyClass operation = new MyClass();
 
-            
             switch (userInput)
             {
                 case 1:
