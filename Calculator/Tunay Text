@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class MyString
+    {
+        public string text;
+        public int Length(string ourString)
+        {
+            int lengthOfString = 0, i = 0;
+            foreach (char item in ourString)
+            {
+                lengthOfString++;
+            }
+            return lengthOfString;
+        }
+        public bool StartWith(string ourString, char endChar) 
+        {
+            if (ourString[0] == endChar) return true;
+            else return false;
+        }
+        public int IndexOf(string ourString, char ourChar)
+        {
+            int index = 0;
+            for (int i = 0; i < ourString.Length; i++)
+            {
+                if (ourChar == ourString[i])
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
+        public int LastIndexOf(string ourString, char ourChar)
+        {
+            int index = 0;
+            for (int i = 0; i < ourString.Length; i++)
+            {
+                if (ourChar == ourString[i])
+                {
+                    index = i;
+                }
+            }
+            return index;
+        }
+        public void Remove(int index)
+        {
+            StringBuilder newString = new StringBuilder();
+            for(int i = 0; i <= index; i++) 
+            {
+                newString.Append(text[i]);   
+            }
+            text = newString.ToString();
+        }
+        public string Join(string separator, string[] ourString)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            string newString = string.Empty;
+            for(int i = 0; i < ourString.Length; i++)
+            {
+                if (i == ourString.Length - 1) stringBuilder.Append(ourString[i]);
+                else stringBuilder.Append(ourString[i] + separator);
+            }
+
+            newString = stringBuilder.ToString();
+            return newString;
+        }
+    }
+}
